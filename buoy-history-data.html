@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="plugin/bootstrap-table/bootstrap-table.css">
     <link rel="stylesheet" type="text/css" href="assets/css/dyl-admin.css">
+    <link rel="stylesheet" type="text/css" href="plugin/completer/completer.css">
 
     <title>帝一流</title>
 </head>
@@ -100,7 +101,7 @@
 </header>
 <div id="global">
     <div class="container-fluid">
-        <div class="panel panel-default demo">
+        <div class="panel panel-default">
             <div class="panel-heading ">
                 浮球信息
             </div>
@@ -108,7 +109,7 @@
                 <form action="#" class="form-group form-horizontal">
                     <div class="row">
                         <div class="col-sm-3 col-md-2">
-                            <input type="text" class="form-control" placeholder="浮标名称">
+                            <input type="text" class="form-control" placeholder="浮标名称" data-toggle="completer" data-suggest="true" data-source="['PG3711981', 'PG3711982', 'PG3711983', 'PG3711984', 'PG3711985']">
                         </div>
                         <div class="col-sm-6 col-md-4">
                             <div class="input-group">
@@ -140,6 +141,7 @@
 <script src="plugin/bootstrap-table/bootstrap-table.js"></script>
 <script src="plugin/bootstrap-table/bootstrap-table-locale-all.js"></script>
 <script src="plugin/laydate/laydate.js"></script>
+<script src="plugin/completer/completer.js"></script>
 <script src="assets/js/buoy-history-data.js"></script>
 </body>
 </html>
