@@ -2,7 +2,8 @@ $(function () {
     var autoHeight =  $(window).height() - (51 + 52 + 40 + 52);
     $("div.auto-height").height(autoHeight);
 
-    Dyl.offsetH('#amap', '#panel-trace', 130);
+    var rowHeight = $('#buoy-search').height();
+    Dyl.offsetH('#amap', '#panel-trace', 40 + rowHeight + 50);
 
     laydate.render({
         elem: '#gpsTime'

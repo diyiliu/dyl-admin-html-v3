@@ -2,7 +2,9 @@ $(function () {
     var autoHeight =  $(window).height() - (51 + 52 + 40 + 52);
     $("div.auto-height").height(autoHeight);
 
-    var tableHeight = autoHeight - (40 + 35 + 35);
+    var rowHeight = $('#buoy-search').height();
+    var tableHeight = autoHeight - (40 + rowHeight + 35);
+
     $('#buoy-table').bootstrapTable({
         height: tableHeight,
         locale: 'zh-CN',
