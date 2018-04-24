@@ -1,3 +1,10 @@
+Dyl = {
+    offsetH: function (o1, o2, y) {
+        var ph = $(o2).height();
+        $(o1).height(ph - y);
+    }
+};
+
 $(function () {
     var map = new AMap.Map('amap',{
         resizeEnable: true,
@@ -7,11 +14,5 @@ $(function () {
     AMap.plugin(["AMap.ToolBar", "AMap.Scale"], function() {
         map.addControl(new AMap.ToolBar());
         map.addControl(new AMap.Scale());
-    });
-
-    $("#buoy").completer({
-        zIndex: 200,
-        suggest: true,
-        source: ["PG3711981", "PG3711982", "PG3711983", "PG3711984"]
     });
 });

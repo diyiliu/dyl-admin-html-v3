@@ -1,4 +1,9 @@
 $(function () {
+    var autoHeight =  $(window).height() - (51 + 52 + 40 + 52);
+    $("div.auto-height").height(autoHeight);
+
+    Dyl.offsetH('#amap', '#panel-trace', 130);
+
     laydate.render({
         elem: '#gpsTime'
         ,type: 'datetime'
@@ -13,4 +18,6 @@ $(function () {
         suggest: true,
         source: ["PG3711981", "PG3711982", "PG3711983", "PG3711984"]
     });
+
+
 });

@@ -1,5 +1,10 @@
 $(function () {
+    var autoHeight =  $(window).height() - (51 + 52 + 40 + 52);
+    $("div.auto-height").height(autoHeight);
+
+    var tableHeight = autoHeight - (40 + 35 + 35);
     $('#buoy-table').bootstrapTable({
+        height: tableHeight,
         locale: 'zh-CN',
         url: './assets/data/buoy.json',
         method: 'post',
