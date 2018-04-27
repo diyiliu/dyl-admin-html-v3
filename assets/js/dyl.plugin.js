@@ -6,13 +6,12 @@ Dyl = {
 };
 
 $(function () {
-    var map = new AMap.Map('amap',{
-        resizeEnable: true,
-        zoom: 6
-    });
+    var autoHeight =  $(window).height() - (51 + 40 + 40 + 52);
+    $("div.auto-height").height(autoHeight);
 
-    AMap.plugin(["AMap.ToolBar", "AMap.Scale"], function() {
-        map.addControl(new AMap.ToolBar());
-        map.addControl(new AMap.Scale());
-    });
+    var autoHeightHeader =  $(window).height() - (51 + 40 + 52);
+    $("div.auto-height-header").height(autoHeightHeader);
+
+    var autoHeightTab=  $(window).height() - (51 + 52 + 40 + 52);
+    $("div.auto-height-tab").height(autoHeightTab);
 });

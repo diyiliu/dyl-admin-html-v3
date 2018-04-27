@@ -3,18 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <link rel="stylesheet" type="text/css" href="src/css/bootstrap-clearmin.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-clearmin.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/roboto.css">
     <link rel="stylesheet" type="text/css" href="assets/css/material-design.css">
     <link rel="stylesheet" type="text/css" href="assets/css/small-n-flat.css">
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="plugin/bootstrap-table/bootstrap-table.css">
+    <link rel="stylesheet" type="text/css" href="plugin/treegrid/css/jquery.treegrid.css">
     <link rel="stylesheet" type="text/css" href="assets/css/dyl-admin.css">
-    <link rel="stylesheet" type="text/css" href="plugin/completer/completer.css">
-
     <title>帝一流</title>
 </head>
-<body class="cm-no-transition cm-2-navbar">
+<body class="cm-no-transition cm-1-navbar">
 <div id="cm-menu">
     <nav class="cm-navbar cm-navbar-primary">
         <div class="cm-flex"><a href="index.html" class="cm-logo"></a></div>
@@ -25,19 +24,19 @@
             <div id="cm-menu-scroller">
                 <ul class="cm-menu-items">
                     <li><a href="index.html" class="sf-house">首页</a></li>
-                    <li class="cm-submenu pre-open">
+                    <li class="cm-submenu">
                         <a class="sf-compass">海洋浮球 <span class="caret"></span></a>
                         <ul>
                             <li><a href="buoy-list.html">浮球列表</a></li>
-                            <li class="active"><a href="buoy-history-data.html">历史回放</a></li>
+                            <li><a href="buoy-history-data.html">历史回放</a></li>
                         </ul>
                     </li>
-                    <li class="cm-submenu">
+                    <li class="cm-submenu pre-open">
                         <a class="sf-cog">系统管理 <span class="caret"></span></a>
                         <ul>
                             <li><a href="#">用户管理</a></li>
                             <li><a href="#">角色管理</a></li>
-                            <li><a href="config-menu.html">菜单管理</a></li>
+                            <li class="active"><a href="config-menu.html">菜单管理</a></li>
                         </ul>
                     </li>
                     <li><a href="dashboard-sales.html" class="sf-dashboard">Dashboard</a></li>
@@ -69,7 +68,7 @@
     <nav class="cm-navbar cm-navbar-primary">
         <div class="btn btn-primary md-menu-white hidden-md hidden-lg" data-toggle="cm-menu"></div>
         <div class="cm-flex">
-            <h1>海洋浮球</h1>
+            <h1>系统管理</h1>
             <form id="cm-search" action="index.html" method="get">
                 <input type="search" name="q" autocomplete="off" placeholder="Search...">
             </form>
@@ -96,45 +95,20 @@
             </ul>
         </div>
     </nav>
-    <nav class="cm-navbar cm-navbar-default cm-navbar-slideup">
-        <div class="cm-flex">
-            <div class="nav-tabs-container">
-                <ul class="nav nav-tabs">
-                    <li  class="active"><a href="buoy-history-data.html">历史数据</a></li>
-                    <li><a href="buoy-history-trace.html">历史轨迹</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 </header>
 <div id="global">
     <div class="container-fluid">
-        <div class="panel panel-default auto-height-tab">
-            <div class="panel-heading ">
-                浮球信息
+        <div class="panel panel-default auto-height-header">
+            <div class="panel-heading">
+                菜单管理
             </div>
             <div class="panel-body">
-                <form action="#" class="form-group form-horizontal">
-                    <div class="row" id="buoy-search">
-                        <div class="col-sm-3 col-md-2">
-                            <input type="text" class="form-control" placeholder="浮标名称" data-toggle="completer" data-suggest="true" data-source="['PG3711981', 'PG3711982', 'PG3711983', 'PG3711984', 'PG3711985']">
-                        </div>
-                        <div class="col-sm-6 col-md-4">
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="gpsTime" placeholder="采集时间">
-                                <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button" id="btnTime">
-                                             <img src="assets/img/sf/calendar-clock.svg" height="18" width="18">
-                                        </button>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-sm-3 col-md-2 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary btn-block">查询</button>
-                        </div>
-                    </div>
-                </form>
-                <table id="buoy-table" class="table table-hover"></table>
+                <div class="btn-group" role="group" id="toolbar">
+                    <button type="button" class="btn btn-default"><i class="fa fa-fw fa-plus"></i> 添加</button>
+                    <button type="button" class="btn btn-default"><i class="fa fa-fw fa-pencil"></i> 修改</button>
+                    <button type="button" class="btn btn-default"><i class="fa fa-fw fa-remove"></i> 删除</button>
+                </div>
+                <table id="menu-table"></table>
             </div>
         </div>
     </div>
@@ -145,12 +119,12 @@
 <script src="assets/js/jquery.cookie.min.js"></script>
 <script src="assets/js/fastclick.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/clearmin.min.js"></script>
 <script src="plugin/bootstrap-table/bootstrap-table.js"></script>
 <script src="plugin/bootstrap-table/bootstrap-table-locale-all.js"></script>
-<script src="plugin/laydate/laydate.js"></script>
-<script src="plugin/completer/completer.js"></script>
+<script src="plugin/treegrid/js/bootstrap-table-treegrid.js"></script>
+<script src="plugin/treegrid/js/jquery.treegrid.js"></script>
+<script src="assets/js/clearmin.min.js"></script>
 <script src="assets/js/dyl.plugin.js"></script>
-<script src="assets/js/buoy.data.js"></script>
+<script src="assets/js/config.menu.js"></script>
 </body>
 </html>
