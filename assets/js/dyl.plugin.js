@@ -5,6 +5,7 @@ Dyl = {
     }
 };
 
+
 $(function () {
     var autoHeight =  $(window).height() - (51 + 40 + 40 + 52);
     $("div.auto-height").height(autoHeight);
