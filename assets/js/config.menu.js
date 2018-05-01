@@ -2,6 +2,7 @@ $(function () {
     var autoHeightHeader = $("div.auto-height-header").height();
     var tableHeight = autoHeightHeader - (40 + 35);
 
+
     var $table = $('#menu-table');
     $table.bootstrapTable({
         height: tableHeight,
