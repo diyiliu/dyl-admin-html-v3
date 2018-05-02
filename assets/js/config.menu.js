@@ -2,7 +2,6 @@ $(function () {
     var autoHeightHeader = $("div.auto-height-header").height();
     var tableHeight = autoHeightHeader - (40 + 35);
 
-
     var $table = $('#menu-table');
     $table.bootstrapTable({
         height: tableHeight,
@@ -19,25 +18,49 @@ $(function () {
             },
             {
                 field: 'name',
-                title: '名称',
-                width: 300
+                title: '菜单名称'
             },
             {
-                field: 'status',
-                title: '状态',
-                sortable: true,
+                field: 'type',
+                title: '类型',
                 align: 'center',
-                formatter: 'statusFormatter',
-                width: 200
+                formatter: 'typeFormatter'
             },
             {
-                field: 'permissionValue',
-                title: '权限值'
+                field: 'controller',
+                title: '控制器'
+            },
+            {
+                field: 'view',
+                title: '视图'
+            },
+            {
+                field: 'isMenu',
+                title: '导航菜单',
+                align: 'center',
+                formatter: function (v) {
+                    if (v == 1){
+
+                        return '是';
+                    }
+
+                    return '否';
+                }
+            },
+            {
+                field: 'sort',
+                title: '排序'
+            },
+            {
+                field: 'iconCss',
+                title: '图标',
+                align: 'center',
+                formatter: 'iconFormatter'
             }
         ],
         treeShowField: 'name',
         parentIdField: 'pid',
-        onLoadSuccess: function() {
+        onLoadSuccess: function () {
             $table.treegrid({
                 treeColumn: 1,
                 onChange: function() {
@@ -56,17 +79,14 @@ function typeFormatter(value, row, index) {
     if (value === 'button') {
         return '按钮';
     }
-    if (value === 'api') {
-        return '接口';
+    if (value === 'node') {
+        return '节点';
     }
     return '-';
 }
 
-// 格式化状态
-function statusFormatter(value, row, index) {
-    if (value === 1) {
-        return '<span class="label label-success">正常</span>';
-    } else {
-        return '<span class="label label-default">锁定</span>';
-    }
+// 格式化图标
+function iconFormatter(value, row, index) {
+    return '<span class="' + value + '" ' +
+        'style="display: inline-block;width: 16px;height: 16px;background-size: 16px 16px;"></span>';
 }
