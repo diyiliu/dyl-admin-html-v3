@@ -62,9 +62,8 @@ $(function () {
         onLoadSuccess: function () {
             $table.treegrid({
                 treeColumn: 1,
-                autowidth: true,
                 onChange: function() {
-                    // $table.bootstrapTable('resetWidth');
+                    $table.bootstrapTable('resetWidth');
                 }
             });
         }
