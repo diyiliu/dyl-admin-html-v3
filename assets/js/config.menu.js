@@ -89,3 +89,12 @@ function iconFormatter(value, row, index) {
     return '<span class="' + value + '" ' +
         'style="display: inline-block;width: 16px;height: 16px;background-size: 16px 16px;"></span>';
 }
+
+// 格式化状态
+function statusFormatter(value, row, index) {
+    if (value === 1) {
+        return '<span class="label label-success">正常</span>';
+    } else {
+        return '<span class="label label-default">锁定</span>';
+    }
+}
