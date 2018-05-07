@@ -1,14 +1,14 @@
 .map {
-     width: 100%;
-     height: 100%;
- }
+    width: 100%;
+    height: 100%;
+}
 
-.buoy-left{
+.buoy-left {
     width: 240px;
     float: left;
 }
 
-.buoy-left-map{
+.buoy-left-map {
     margin-left: 250px;
     height: 100%;
     padding: 0 0 0 10px;
@@ -52,5 +52,9 @@
 }
 
 .layui-laydate-footer span:hover {
-    color: #217dbb!important;
+    color: #217dbb !important;
+}
+
+.search-block {
+    border-bottom: 5px solid #eee;
 }

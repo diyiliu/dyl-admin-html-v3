@@ -1,12 +1,14 @@
 $(function () {
     var autoHeight = $("div.auto-height").height();
-    var tableHeight = autoHeight - 0;
+    var rowHeight = $('#search-block').height();
+    var tableHeight = autoHeight - rowHeight;
     var $table = $('#menu-table');
     $table.bootstrapTable({
         height: tableHeight,
         sidePagination: 'server',
         url: './assets/data/menu.json',
         toolbar: '#toolbar',
+        toolbarAlign: 'right',
         // 条纹
         striped: true,
         idField: 'id',
