@@ -34,8 +34,8 @@
                     <li class="cm-submenu pre-open">
                         <a class="sf-cog">系统管理 <span class="caret"></span></a>
                         <ul>
-                            <li class="active"><a href="config-user.html">用户管理</a></li>
-                            <li><a href="config-role.html">角色管理</a></li>
+                            <li><a href="config-user.html">用户管理</a></li>
+                            <li class="active"><a href="config-role.html">角色管理</a></li>
                             <li><a href="config-menu.html">菜单管理</a></li>
                         </ul>
                     </li>
@@ -72,7 +72,7 @@
                 <ol class="breadcrumb">
                     <li><a href="#">首页</a></li>
                     <li><a href="#">系统管理</a></li>
-                    <li class="active">用户管理</li>
+                    <li class="active">角色管理</li>
                 </ol>
             </div>
             <form id="cm-search" action="index.html" method="get">
@@ -106,32 +106,10 @@
     <div class="container-fluid">
         <div class="panel panel-default">
             <div class="panel-body auto-height">
-                <div class="search-block" id="search-block">
-                    <form action="#" class="form-group form-horizontal">
-                        <div class="row">
-                            <div class="col-sm-3 col-md-2">
-                                <input type="text" class="form-control" placeholder="名称" data-toggle="completer" data-suggest="true" data-source="['PG3711981', 'PG3711982', 'PG3711983', 'PG3711984', 'PG3711985']">
-                            </div>
-                            <div class="col-sm-6 col-md-4">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="gpsTime" placeholder="时间">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button" id="btnTime">
-                                             <img src="assets/img/sf/calendar-clock.svg" height="18" width="18">
-                                        </button>
-                                </span>
-                                </div>
-                            </div>
-                            <div class="col-sm-3 col-md-2 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary btn-block">查询</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
                 <div class="btn-group" role="group" id="toolbar">
-                    <button type="button" class="btn btn-default"><i class="fa fa-fw fa-plus"></i></button>
-                    <button type="button" class="btn btn-default"><i class="fa fa-fw fa-trash-o"></i></button>
-                    <button type="button" class="btn btn-default"><i class="fa fa-fw fa-pencil"></i></button>
+                    <button type="button" class="btn btn-default"><i class="fa fa-fw fa-plus"></i> 添加</button>
+                    <button type="button" class="btn btn-default"><i class="fa fa-fw fa-pencil"></i> 修改</button>
+                    <button type="button" class="btn btn-default"><i class="fa fa-fw fa-remove"></i> 删除</button>
                 </div>
                 <table id="menu-table"></table>
             </div>
@@ -150,7 +128,7 @@
 <script src="plugin/treegrid/js/jquery.treegrid.js"></script>
 <script src="assets/js/clearmin.min.js"></script>
 <script src="assets/js/dyl.plugin.js"></script>
-<script src="assets/js/config.user.js"></script>
+<script src="assets/js/config.role.js"></script>
 
 </body>
 </html>
