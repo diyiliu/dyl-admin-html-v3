@@ -39,7 +39,7 @@ $(function () {
                 title: '导航菜单',
                 align: 'center',
                 formatter: function (v) {
-                    if (v == 1){
+                    if (v == 1) {
 
                         return '是';
                     }
@@ -58,6 +58,38 @@ $(function () {
                 formatter: 'iconFormatter'
             }
         ]
+    });
+
+    var expire = new Date();
+    expire.setFullYear(expire.getFullYear() + 1);
+    expire.setDate(expire.getDate() - 1);
+
+    laydate.render({
+        elem: '#expireTime'
+        , type: 'datetime'
+        , value: expire
+    });
+
+    $('#saveUser').on('click', function () {
+        $('#userModal').modal('hide');
+        toastr.success('保存成功', '提示', {
+            timeOut: 1000,
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": true,
+            "positionClass": "toast-bottom-right",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut",
+            "tapToDismiss": false
+        });
     });
 });
 
@@ -93,6 +125,4 @@ function statusFormatter(value, row, index) {
 
 /* ==================================================== */
 
-$('#userAdd').click(function () {
-    swal("Hey, Good job !!", "You clicked the button !!", "success")
-});
+
