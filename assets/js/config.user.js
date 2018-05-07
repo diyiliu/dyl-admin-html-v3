@@ -2,8 +2,7 @@ $(function () {
     var autoHeight = $("div.auto-height").height();
     var rowHeight = $('#search-block').height();
     var tableHeight = autoHeight - rowHeight;
-    var $table = $('#menu-table');
-    $table.bootstrapTable({
+    $('#menu-table').bootstrapTable({
         height: tableHeight,
         sidePagination: 'server',
         url: './assets/data/menu.json',
@@ -58,17 +57,7 @@ $(function () {
                 align: 'center',
                 formatter: 'iconFormatter'
             }
-        ],
-        treeShowField: 'name',
-        parentIdField: 'pid',
-        onLoadSuccess: function () {
-            $table.treegrid({
-                treeColumn: 1,
-                onChange: function() {
-                    $table.bootstrapTable('resetWidth');
-                }
-            });
-        }
+        ]
     });
 });
 
@@ -100,3 +89,10 @@ function statusFormatter(value, row, index) {
         return '<span class="label label-default">锁定</span>';
     }
 }
+
+
+/* ==================================================== */
+
+$('#userAdd').click(function () {
+    swal("Hey, Good job !!", "You clicked the button !!", "success")
+});
