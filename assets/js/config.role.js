@@ -1,15 +1,13 @@
 $(function () {
     var autoHeight = $("div.auto-height").height();
     var tableHeight = autoHeight - 0;
-    var $table = $('#menu-table');
-    $table.bootstrapTable({
+    $('#role-table').bootstrapTable({
         height: tableHeight,
         sidePagination: 'server',
-        url: './assets/data/menu.json',
+        url: './assets/data/role.json',
         toolbar: '#toolbar',
         // 条纹
         striped: true,
-        idField: 'id',
         columns: [
             {
                 field: 'ck',
@@ -17,56 +15,37 @@ $(function () {
             },
             {
                 field: 'name',
-                title: '菜单名称'
+                title: '角色名称'
             },
             {
-                field: 'type',
-                title: '类型',
+                field: 'code',
+                title: '角色代码',
                 align: 'center',
-                formatter: 'typeFormatter'
             },
             {
-                field: 'controller',
-                title: '控制器'
+                field: 'comment',
+                title: '角色描述'
             },
             {
-                field: 'view',
-                title: '视图'
+                field: 'createUser',
+                title: '创建人'
             },
             {
-                field: 'isMenu',
-                title: '导航菜单',
+                field: 'createTime',
+                title: '创建时间',
                 align: 'center',
-                formatter: function (v) {
-                    if (v == 1){
-
-                        return '是';
-                    }
-
-                    return '否';
+            },
+            {
+                field: '',
+                title: '授权',
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return '<a href="#"><span class="sf-wrench-screwdriver" style="display: inline-block;' +
+                        'width: 16px;height: 16px;background-size: 16px 16px;"></span></a>';
                 }
-            },
-            {
-                field: 'sort',
-                title: '排序'
-            },
-            {
-                field: 'iconCss',
-                title: '图标',
-                align: 'center',
-                formatter: 'iconFormatter'
             }
-        ],
-        treeShowField: 'name',
-        parentIdField: 'pid',
-        onLoadSuccess: function () {
-            $table.treegrid({
-                treeColumn: 1,
-                onChange: function() {
-                    $table.bootstrapTable('resetWidth');
-                }
-            });
-        }
+
+        ]
     });
 });
 

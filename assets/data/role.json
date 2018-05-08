@@ -1,0 +1,7 @@
+[
+  {"id":1,"name":"管理员","code":"admin","comment":"管理员角色","createUser":"管理员","createTime":"2018-05-08 17:04:05"},
+  {"id":2,"name":"客户1","code":"customer1","comment":"普通角色","createUser":"管理员","createTime":"2018-05-08 17:04:05"},
+  {"id":3,"name":"客户2","code":"customer2","comment":"普通角色","createUser":"管理员","createTime":"2018-05-08 17:04:05"},
+  {"id":4,"name":"客户3","code":"customer3","comment":"普通角色","createUser":"管理员","createTime":"2018-05-08 17:04:05"},
+  {"id":5,"name":"客户4","code":"customer4","comment":"普通角色","createUser":"管理员","createTime":"2018-05-08 17:04:05"}
+]

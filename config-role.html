@@ -107,15 +107,55 @@
         <div class="panel panel-default">
             <div class="panel-body auto-height">
                 <div class="btn-group" role="group" id="toolbar">
-                    <button type="button" class="btn btn-default"><i class="fa fa-fw fa-plus"></i> 添加</button>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#roleModal"><i class="fa fa-fw fa-plus"></i> 添加</button>
                     <button type="button" class="btn btn-default"><i class="fa fa-fw fa-pencil"></i> 修改</button>
                     <button type="button" class="btn btn-default"><i class="fa fa-fw fa-remove"></i> 删除</button>
                 </div>
-                <table id="menu-table"></table>
+                <table id="role-table"></table>
             </div>
         </div>
     </div>
     <footer class="cm-footer"><span class="pull-left">帝一流</span><span class="pull-right">&copy; diyiliu.cc</span></footer>
+</div>
+<div id="roleModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h5 class="modal-title">
+                    添加角色
+                </h5>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">角色名称</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="username" placeholder="角色名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">角色代码</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" placeholder="角色代码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="comment" class="col-sm-2 control-label">角色描述</label>
+                        <div class="col-sm-10">
+                            <textarea name="comment" id="comment" cols="50" rows="5"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="saveRole">保存</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>
 <script src="assets/js/lib/jquery-2.1.3.min.js"></script>
 <script src="assets/js/jquery.mousewheel.min.js"></script>
@@ -126,7 +166,7 @@
 <script src="plugin/bootstrap-table/bootstrap-table-locale-all.js"></script>
 <script src="plugin/treegrid/js/bootstrap-table-treegrid.js"></script>
 <script src="plugin/treegrid/js/jquery.treegrid.js"></script>
-<script src="assets/js/clearmin.min.js"></script>
+<script src="assets/js/clearmin.js"></script>
 <script src="assets/js/dyl.plugin.js"></script>
 <script src="assets/js/config.role.js"></script>
 
