@@ -56,7 +56,6 @@ $(function () {
             checkboxes: true,
             json: './assets/data/checkMenu.json',
         });
-
     });
 });
 
