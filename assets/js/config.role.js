@@ -47,16 +47,23 @@ $(function () {
         ]
     });
 
+    var myTreeView;
     $('#menuModal').on('show.bs.modal', function (event) {
         var aObj = $(event.relatedTarget)
         var roleId = aObj.data('id')
 
-        var myTreeView = new dhtmlXTreeView({
+         myTreeView = new dhtmlXTreeView({
             parent: "menuTree",
             checkboxes: true,
             json: './assets/data/checkMenu.json',
         });
     });
+
+
+    $('#saveMenu').on('click', function () {
+        var ck = myTreeView.getAllChecked();
+        alert(ck);
+    })
 });
 
 // 格式化状态
