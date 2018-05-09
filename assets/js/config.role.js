@@ -40,33 +40,25 @@ $(function () {
                 title: '授权',
                 align: 'center',
                 formatter: function (value, row, index) {
-                    return '<a href="#"><span class="sf-wrench-screwdriver" style="display: inline-block;' +
+                    return '<a href="#menuModal" data-toggle="modal" data-id="' + row.id +'"><span class="sf-wrench-screwdriver" style="display: inline-block;' +
                         'width: 16px;height: 16px;background-size: 16px 16px;"></span></a>';
                 }
             }
         ]
     });
+
+    $('#menuModal').on('show.bs.modal', function (event) {
+        var aObj = $(event.relatedTarget)
+        var roleId = aObj.data('id')
+
+        var myTreeView = new dhtmlXTreeView({
+            parent: "menuTree",
+            checkboxes: true,
+            json: './assets/data/checkMenu.json',
+        });
+
+    });
 });
-
-// 格式化类型
-function typeFormatter(value, row, index) {
-    if (value === 'menu') {
-        return '菜单';
-    }
-    if (value === 'button') {
-        return '按钮';
-    }
-    if (value === 'node') {
-        return '节点';
-    }
-    return '-';
-}
-
-// 格式化图标
-function iconFormatter(value, row, index) {
-    return '<span class="' + value + '" ' +
-        'style="display: inline-block;width: 16px;height: 16px;background-size: 16px 16px;"></span>';
-}
 
 // 格式化状态
 function statusFormatter(value, row, index) {
