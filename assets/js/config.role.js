@@ -62,7 +62,9 @@ $(function () {
 
     $('#saveMenu').on('click', function () {
         var ck = myTreeView.getAllChecked();
-        alert(ck);
+        var t = myTreeView.getUserData(1, 'name');
+
+        alert(t);
     })
 });
 

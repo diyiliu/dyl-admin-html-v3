@@ -2,7 +2,9 @@ $(function () {
     var autoHeight = $("div.auto-height").height();
     var rowHeight = $('#search-block').height();
     var tableHeight = autoHeight - rowHeight;
-    $('#menu-table').bootstrapTable({
+
+    var $table = $('#menu-table')
+    $table.bootstrapTable({
         height: tableHeight,
         sidePagination: 'server',
         url: './assets/data/menu.json',
@@ -73,7 +75,7 @@ $(function () {
     $('#saveUser').on('click', function () {
         $('#userModal').modal('hide');
         toastr.success('保存成功', '提示', {
-            timeOut: 1000,
+            timeOut: 3000,
             "closeButton": true,
             "debug": false,
             "newestOnTop": true,
@@ -90,6 +92,15 @@ $(function () {
             "hideMethod": "fadeOut",
             "tapToDismiss": false
         });
+    });
+
+    $('#editUser').on('click', function () {
+        swal("Hey, Here's a message !!")
+    });
+
+    $('#delUser').on('click', function () {
+        var users = $table.bootstrapTable('getSelections');
+        alert(JSON.stringify(users[0]));
     });
 });
 
