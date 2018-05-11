@@ -70,7 +70,7 @@ $(function () {
                 title: '重置密码',
                 align: 'center',
                 formatter: function (value, row, index) {
-                    return '<a href="#"><span class="sf-lock" style="display: inline-block;width: 16px;height: 16px;background-size: 16px 16px;"></span></a>';
+                    return '<a href="javascript:void(0);" class="resetPwd" onclick="alert(123);"><span class="sf-lock" style="display: inline-block;width: 16px;height: 16px;background-size: 16px 16px;"></span></a>';
                 }
             }
         ]
@@ -124,6 +124,11 @@ $(function () {
     $('#delUser').on('click', function () {
         var users = $table.bootstrapTable('getSelections');
         alert(JSON.stringify(users[0]));
+    });
+
+    $('.resetPwd').on('click', function () {
+        alert(1);
+        return false;
     });
 });
 
