@@ -7,57 +7,71 @@ $(function () {
     $table.bootstrapTable({
         height: tableHeight,
         sidePagination: 'server',
-        url: './assets/data/menu.json',
+        url: './assets/data/user.json',
         toolbar: '#toolbar',
         toolbarAlign: 'right',
         // 条纹
         striped: true,
-        idField: 'id',
         columns: [
             {
                 field: 'ck',
                 checkbox: true
             },
             {
+                field: 'username',
+                title: '登录名'
+            },
+            {
                 field: 'name',
-                title: '菜单名称'
+                title: '姓名'
             },
             {
-                field: 'type',
-                title: '类型',
-                align: 'center',
-                formatter: 'typeFormatter'
+                field: 'role',
+                title: '角色'
             },
             {
-                field: 'controller',
-                title: '控制器'
+                field: '',
+                title: '机构'
             },
             {
-                field: 'view',
-                title: '视图'
+                field: 'tel',
+                title: '手机'
             },
             {
-                field: 'isMenu',
-                title: '导航菜单',
-                align: 'center',
-                formatter: function (v) {
-                    if (v == 1) {
-
-                        return '是';
+                field: 'lastLoginTime',
+                title: '登录时间'
+            },
+            {
+                field: 'createTime',
+                title: '创建时间',
+                formatter: function (value, row, index) {
+                    var str = '';
+                    if (value){
+                        str = value.substr(0, 10);
                     }
 
-                    return '否';
+                    return '<span style="cursor: default" title="' + value + '">' + str + '</span>';
                 }
             },
             {
-                field: 'sort',
-                title: '排序'
+                field: 'status',
+                title: '状态',
+                align: 'center',
+                formatter: function (value, row, index) {
+                    if (1 == value){
+                        return '<span class="sf-switch-on" style="display: inline-block;width: 16px;height: 16px;background-size: 16px 16px;"></span>';
+                    }
+
+                    return '<span class="sf-switch-off" style="display: inline-block;width: 16px;height: 16px;background-size: 16px 16px;"></span>';
+                }
             },
             {
-                field: 'iconCss',
-                title: '图标',
+                field: '',
+                title: '重置密码',
                 align: 'center',
-                formatter: 'iconFormatter'
+                formatter: function (value, row, index) {
+                    return '<a href="#"><span class="sf-lock" style="display: inline-block;width: 16px;height: 16px;background-size: 16px 16px;"></span></a>';
+                }
             }
         ]
     });
@@ -72,8 +86,17 @@ $(function () {
         , value: expire
     });
 
+    $('#addUser').on('click', function () {
+        $('#userModal').modal('show');
+        $('#selRole').chosen();
+    });
+
+    $('#delUser').on('click', function () {
+    });
+
     $('#saveUser').on('click', function () {
-        $('#userModal').modal('hide');
+        $('#selRole').chosen('destroy');
+        /*$('#userModal').modal('hide');
         toastr.success('保存成功', '提示', {
             timeOut: 3000,
             "closeButton": true,
@@ -91,7 +114,7 @@ $(function () {
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut",
             "tapToDismiss": false
-        });
+        });*/
     });
 
     $('#editUser').on('click', function () {
