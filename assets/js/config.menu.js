@@ -92,11 +92,20 @@ $(function () {
         return false;
     });
 
-    var i = 1;
+/*    var i = 1;
     $("#navMenu").on('click', function () {
         $('#isMenu').val(i++ % 2);
         $("#isNav").toggle();
         $("#notNav").toggle();
+    });*/
+
+    var i = 1;
+    $('#isNav').toggle(function () {
+        $(this).find('img').attr('src', 'assets/img/sf/switch-on.svg');
+        $('#isMenu').val(i++ % 2);
+    },function () {
+        $(this).find('img').attr('src', 'assets/img/sf/switch-off.svg');
+        $('#isMenu').val(i++ % 2);
     });
 });
 
