@@ -68,6 +68,36 @@ $(function () {
             });
         }
     });
+
+    var myTreeView;
+    $('#addMenu').on('click', function () {
+        $('#menuModal').modal('show');
+
+        myTreeView = new dhtmlXTreeView({
+            parent: "menuTree",
+            // checkboxes: true,
+            json: './assets/data/checkMenu.json',
+        });
+
+        myTreeView.attachEvent("onClick", function(id, state){
+            var str = this.getItemText(id);
+            $('#pid').val(str);
+            $('#treeDrop').dropdown('toggle');
+        });
+    });
+
+    $('#menuTree').on('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+    });
+
+    var i = 1;
+    $("#navMenu").on('click', function () {
+        $('#isMenu').val(i++ % 2);
+        $("#isNav").toggle();
+        $("#notNav").toggle();
+    });
 });
 
 // 格式化类型

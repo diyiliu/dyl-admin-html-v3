@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="plugin/bootstrap-table/bootstrap-table.css">
     <link rel="stylesheet" type="text/css" href="plugin/treegrid/css/jquery.treegrid.css">
+    <link rel="stylesheet" type="text/css" href="plugin/treeview/dhtmlxtreeview.css">
     <link rel="stylesheet" type="text/css" href="assets/css/dyl-admin.css">
     <title>帝一流</title>
 </head>
@@ -107,15 +108,106 @@
         <div class="panel panel-default">
             <div class="panel-body auto-height">
                 <div class="btn-group" role="group" id="toolbar">
-                    <button type="button" class="btn btn-default"><i class="fa fa-fw fa-plus"></i> 添加</button>
-                    <button type="button" class="btn btn-default"><i class="fa fa-fw fa-pencil"></i> 修改</button>
-                    <button type="button" class="btn btn-default"><i class="fa fa-fw fa-remove"></i> 删除</button>
+                    <button type="button" class="btn btn-default" id="addMenu"><i class="fa fa-fw fa-plus"></i></button>
+                    <button type="button" class="btn btn-default" id="editMenu"><i class="fa fa-fw fa-pencil"></i></button>
+                    <button type="button" class="btn btn-default" id="delMenu"><i class="fa fa-fw fa-trash-o"></i></button>
                 </div>
                 <table id="menu-table"></table>
             </div>
         </div>
     </div>
     <footer class="cm-footer"><span class="pull-left">帝一流</span><span class="pull-right">&copy; diyiliu.cc</span></footer>
+</div>
+<div id="menuModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h5 class="modal-title">
+                    添加资源
+                </h5>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="pid" class="col-sm-2 control-label">父节点</label>
+                        <div class="col-sm-10">
+                            <div style="position: relative;">
+                                <input type="text" readonly class="form-control  dropdown-toggle" id="pid" placeholder="父节点" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <div class="dropdown-menu form-control" aria-labelledby="pid" id="treeDrop">
+                                    <div id="menuTree" class="modal-tree" style="height: 280px;border: 0px;box-shadow: none;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="type" class="col-sm-2 control-label">资源类型</label>
+                        <div class="col-sm-10">
+                            <select name="type" id="type" class="form-control">
+                                <option value="menu">菜单</option>
+                                <option value="node">节点</option>
+                                <option value="button">按钮</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">资源名称</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" placeholder="资源名称">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="code" class="col-sm-2 control-label">资源代码</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="code" placeholder="资源代码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sort" class="col-sm-2 control-label">排序</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="sort" placeholder="排序">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="controller" class="col-sm-2 control-label">控制器</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="controller" placeholder="控制器">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="view" class="col-sm-2 control-label">视图</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="view" placeholder="视图">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="iconCss" class="col-sm-2 control-label">图标样式</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="iconCss" placeholder="图标样式">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="code" class="col-sm-2 control-label">导航菜单</label>
+                        <div class="col-sm-10">
+                            <input type="hidden" id="isMenu" value="0">
+                            <div class="form-control" style="border: 0px;box-shadow: none">
+                                <span id="navMenu">
+                                    <a href="#" id="isNav" style="display: none"><img src="assets/img/sf/switch-on.svg" height="24" width="24"></a>
+                                    <a href="#" id="notNav"><img src="assets/img/sf/switch-off.svg" height="24" width="24"></a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="saveRole">保存</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>
 <script src="assets/js/lib/jquery-2.1.3.min.js"></script>
 <script src="assets/js/jquery.mousewheel.min.js"></script>
@@ -126,7 +218,8 @@
 <script src="plugin/bootstrap-table/bootstrap-table-locale-all.js"></script>
 <script src="plugin/treegrid/js/bootstrap-table-treegrid.js"></script>
 <script src="plugin/treegrid/js/jquery.treegrid.js"></script>
-<script src="assets/js/clearmin.min.js"></script>
+<script src="plugin/treeview/dhtmlxtreeview.min.js"></script>
+<script src="assets/js/clearmin.js"></script>
 <script src="assets/js/dyl.plugin.js"></script>
 <script src="assets/js/config.menu.js"></script>
 

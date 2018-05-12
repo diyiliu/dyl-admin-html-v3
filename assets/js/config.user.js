@@ -9,7 +9,7 @@ $(function () {
         sidePagination: 'server',
         url: './assets/data/user.json',
         toolbar: '#toolbar',
-        toolbarAlign: 'right',
+        // toolbarAlign: 'right',
         // 条纹
         striped: true,
         columns: [
