@@ -6,12 +6,21 @@ $(function () {
     var $table = $('#menu-table')
     $table.bootstrapTable({
         height: tableHeight,
+        toolbar: '#toolbar',
+        // locale: 'zh-CN',
         sidePagination: 'server',
         url: './assets/data/user.json',
-        toolbar: '#toolbar',
-        // toolbarAlign: 'right',
+        pagination: true,
+        paginationLoop: false,
+        dataField: "data",
         // 条纹
         striped: true,
+        formatShowingRows: function (a, b, c) {
+            return "第 " + a + " / " + b + " 条，共 " + c + " 条 ";
+        },
+        formatRecordsPerPage: function (a) {
+            return "每页 " + a;
+        },
         columns: [
             {
                 field: 'ck',
