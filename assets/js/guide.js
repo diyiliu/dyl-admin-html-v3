@@ -1,12 +1,12 @@
 $(function () {
     var autoHeightTab = $("div.auto-height-tab").height();
-    var rowHeight = $('#site-search').height();
-    var tableHeight = autoHeightTab - (40 + rowHeight + 35);
+    var rowHeight = $('#search-block').height();
+    var tableHeight =  autoHeightTab - rowHeight - 40;
 
-    var $table = $('#menu-table')
+    var $table = $('#siteTable');
     $table.bootstrapTable({
         height: tableHeight,
-        // locale: 'zh-CN',
+        toolbar: '#toolbar',
         sidePagination: 'server',
         url: './assets/data/user.json',
         pagination: true,
@@ -88,16 +88,7 @@ $(function () {
         ]
     });
 
-    var expire = new Date();
-    expire.setFullYear(expire.getFullYear() + 1);
-    expire.setDate(expire.getDate() - 1);
-
-    laydate.render({
-        elem: '#expireTime'
-        , type: 'datetime'
-        , value: expire
-    });
-
+    $('#searchType').chosen();
     $('#addSite').on('click', function () {
         $('#siteModal').modal('show');
         $('#selType').chosen();
