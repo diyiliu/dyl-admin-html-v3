@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="plugin/toastr/toastr.min.css">
     <link rel="stylesheet" type="text/css" href="plugin/sweetalert/sweetalert.css">
     <link rel="stylesheet" type="text/css" href="plugin/chosen/chosen.css">
+    <link rel="stylesheet" type="text/css" href="plugin/taginput/jquery.tagsinput.css">
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-clearmin.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/roboto.css">
     <link rel="stylesheet" type="text/css" href="assets/css/material-design.css">
@@ -82,7 +83,7 @@
         <div class="cm-flex">
             <div class="nav-tabs-container">
                 <ul class="nav nav-tabs">
-                    <li  class="active"><a href="guide-list.html">网址列表</a></li>
+                    <li class="active"><a href="guide-list.html">网址列表</a></li>
                     <li><a href="guide-sort.html">网址排序</a></li>
                 </ul>
             </div>
@@ -97,7 +98,8 @@
                     <form action="#" class="form-group form-horizontal">
                         <div class="row">
                             <div class="col-sm-4 col-md-3">
-                                <select id="searchType" data-placeholder="选择分组 ..." name="type" class="form-control chosen-select">
+                                <select id="searchType" data-placeholder="选择分组 ..." name="type"
+                                        class="form-control chosen-select">
                                     <option value="0"></option>
                                     <option value="1">综合</option>
                                     <option value="2">购物</option>
@@ -105,7 +107,9 @@
                                 </select>
                             </div>
                             <div class="col-sm-6 col-md-4">
-                                <input type="text" class="form-control" placeholder="名称/网址" data-toggle="completer" data-suggest="true" data-source="['PG3711981', 'PG3711982', 'PG3711983', 'PG3711984', 'PG3711985']">
+                                <input type="text" class="form-control" placeholder="名称/网址" data-toggle="completer"
+                                       data-suggest="true"
+                                       data-source="['PG3711981', 'PG3711982', 'PG3711983', 'PG3711984', 'PG3711985']">
                             </div>
                             <div class="col-sm-2 col-md-1 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary btn-block">查询</button>
@@ -115,9 +119,12 @@
                 </div>
                 <div class="btn-group" role="group" id="toolbar">
                     <button type="button" class="btn btn-default" id="addSite"><i class="fa fa-fw fa-plus"></i></button>
-                    <button type="button" class="btn btn-default" id="editSite"><i class="fa fa-fw fa-pencil"></i></button>
-                    <button type="button" class="btn btn-default" id="delSite"><i class="fa fa-fw fa-trash-o"></i></button>
-                    <button type="button" class="btn btn-default" id="addType" title="添加分组"><i class="fa fa-fw fa-file-text-o"></i></button>
+                    <button type="button" class="btn btn-default" id="editSite"><i class="fa fa-fw fa-pencil"></i>
+                    </button>
+                    <button type="button" class="btn btn-default" id="delSite"><i class="fa fa-fw fa-trash-o"></i>
+                    </button>
+                    <button type="button" class="btn btn-default" id="editType" title="添加分组"><i
+                            class="fa fa-fw fa-file-text-o"></i></button>
                 </div>
                 <table id="siteTable"></table>
             </div>
@@ -127,7 +134,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
                     <h5 class="modal-title" id="siteModalTitle">
                         添加网址
                     </h5>
@@ -150,7 +158,8 @@
                         <div class="form-group">
                             <label for="selType" class="col-sm-2 control-label">分组</label>
                             <div class="col-sm-10">
-                                <select id="selType" data-placeholder="选择分组 ..." name="siteType.id" class="form-control chosen-select">
+                                <select id="selType" data-placeholder="选择分组 ..." name="siteType.id"
+                                        class="form-control chosen-select">
                                     <option value="0"></option>
                                     <option value="1">综合</option>
                                     <option value="2">购物</option>
@@ -181,7 +190,32 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-    <footer class="cm-footer"><span class="pull-left">帝一流</span><span class="pull-right">&copy; diyiliu.cc</span></footer>
+    <div id="typeModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                    <h5 class="modal-title">
+                        编辑分组
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-tag">
+                        <input id="typeTag" type="text" class="tags" value="foo,bar,baz,roffle"/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="saveType">保存</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <footer class="cm-footer"><span class="pull-left">帝一流</span><span class="pull-right">&copy; diyiliu.cc</span>
+    </footer>
 </div>
 <script src="assets/js/lib/jquery-2.1.3.min.js"></script>
 <script src="assets/js/jquery.mousewheel.min.js"></script>
@@ -195,6 +229,7 @@
 <script src="plugin/toastr/toastr.min.js"></script>
 <script src="plugin/sweetalert/sweetalert.min.js"></script>
 <script src="plugin/chosen/chosen.jquery.js"></script>
+<script src="plugin/taginput/jquery.tagsinput.js"></script>
 <script src="assets/js/clearmin.js"></script>
 <script src="assets/js/dyl.plugin.js"></script>
 <script src="assets/js/guide.js"></script>

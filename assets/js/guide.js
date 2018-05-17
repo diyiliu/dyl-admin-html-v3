@@ -94,6 +94,12 @@ $(function () {
         $('#selType').chosen();
     });
 
+    $("#editType").on('click', function () {
+        $('#typeTag').tagsInput({width: 'auto', height: 260});
+        $('#typeModal').modal('show');
+    });
+
+
     $('#delSite').on('click', function () {
     });
 
