@@ -126,7 +126,7 @@ $(function () {
 
     laydate.render({
         elem: '#createTime'
-        ,type: 'datetime'
+        ,type: 'date'
         ,range: true
         ,eventElem: '#btnTime'
         ,trigger: 'click'
