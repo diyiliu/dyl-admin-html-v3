@@ -1,5 +1,5 @@
 $(function () {
-    Dyl.offsetH('#list-buoy', '#panel-buoy', 75);
+    Dyl.offsetH('#side-menu', '#panel-buoy', 75);
 
     var map = new AMap.Map('amap',{
         resizeEnable: true,
@@ -15,4 +15,6 @@ $(function () {
         suggest: true,
         source: ["PG3711981", "PG3711982", "PG3711983", "PG3711984"]
     });
+
+    $('#side-menu').metisMenu();
 });
