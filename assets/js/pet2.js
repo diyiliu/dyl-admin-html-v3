@@ -23,7 +23,8 @@ $(function () {
 
    //实例化信息窗体
     var content = [];
-    content.push("小宠");
+    // #2ecc71 在线
+    content.push("小宠  <i class='fa fa-circle' style='color: #95a5a6'></i> ");
     content.push("<i class='fa fa-crosshairs'></i> WIFI定位");
     content.push("2018-07-17 22:02:23");
 
